@@ -10,7 +10,8 @@
 
 <p align="center">
 <a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/ci.yml/badge.svg?branch=main" ></a>
-<a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/docker-publish-latest.yml/badge.svg?branch=main" ></a>
+
+[//]: # (<a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/docker-publish-latest.yml/badge.svg?branch=main" ></a>)
 </p>
 
 <p align="center">
