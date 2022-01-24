@@ -22,8 +22,7 @@
 #### About
 <b> Writeray </b> is a professional service/platform that gives professionals/writers access to the most reliable freelance jobs not only in Kenya but also across the world.
 It brings together the most experienced and highly skilled individuals, before being vetted carefully to ensure only the best get to handle the client orders. Orders and paid
-bi-weekly, currently only using M-PESA - a Kenyan mobile phone-based money transfer and payments service. There are very high quality standards expected from the professionals 
-- which makes the platform stand out from its peers.
+bi-weekly, currently only using M-PESA - a Kenyan mobile phone-based money transfer and payments service. There are very high quality standards expected from the professionals - which makes the platform stand out from its peers.
 
 ## Structure
 The platform is decoupled into three modules.
