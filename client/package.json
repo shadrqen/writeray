@@ -11,7 +11,7 @@
     "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
     "lint": "npm run lint:js && npm run lint:style",
     "lintfix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "jest"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
