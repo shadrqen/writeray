@@ -1,11 +1,8 @@
 <template>
-  <v-app>
-    Home page
-  </v-app>
+  <div>Header</div>
 </template>
-
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'BaseHeader'
 }
 </script>
