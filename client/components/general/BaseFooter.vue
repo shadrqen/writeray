@@ -2,6 +2,7 @@
   <v-app>
     <v-footer
       color="#344754"
+      class="footer"
     >
       <v-container>
         <v-row
@@ -10,18 +11,18 @@
         >
           <v-col cols="6" xl="5" lg="5" md="5" sm="5">
             <span
-              v-for="(link, id) in footer_links.row1"
+              v-for="(link, id) in footerLinks.row1"
               :key="id"
               class="row1Footer white--text"
             >
-              <span @click="process_footer_link_clicks(link.url)">
+              <span @click="$router.push(link.url)">
                 {{ link.text }}
               </span> <br>
             </span>
           </v-col>
           <v-col cols="6" xl="5" lg="5" md="5" sm="5">
             <span
-              v-for="(link, id) in footer_links.row2"
+              v-for="(link, id) in footerLinks.row2"
               :key="id"
               class="row1Footer white--text"
             >
@@ -35,14 +36,13 @@
             lg="2"
             md="2"
             sm="2"
-            style="justify-content: flex-end"
           >
             <span
-              v-for="(link, id) in footer_links.row3"
+              v-for="(link, id) in footerLinks.row3"
               :key="id"
               class="row1Footer white--text"
             >
-              <span @click="process_footer_link_clicks(link.url)">
+              <span @click="$router.push(link.url)">
                 <v-icon color="white">{{ link.icon }}</v-icon>
                 {{ link.text }}
               </span> <br>
@@ -74,50 +74,44 @@
 </template>
 
 <script>
-
+import { ref } from '@vue/composition-api'
 export default {
   name: 'BaseFooter',
-  data () {
-    return {
-      links: [
-        'Home',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us'
+  setup () {
+    const footerLinks = ref({
+      row1: [
+        { text: 'Privacy Policy', icon: '', url: '/general/privacy-policy' },
+        { text: 'Cookie Policy', icon: '', url: '/general/cookie-policy' },
+        { text: 'Terms and Conditions', icon: '', url: '/general/terms-and-conditions' }
       ],
-      footer_links: {
-        row1: [
-          { text: 'Privacy Policy', icon: '', url: '/general/privacy-policy' },
-          { text: 'Cookie Policy', icon: '', url: '/general/cookie-policy' },
-          { text: 'Terms and Conditions', icon: '', url: '/general/terms-and-conditions' }
-        ],
-        row2: [
-          { text: 'support@writeray.com', icon: 'mdi-email' },
-          { text: '+254 732 660 968', icon: 'mdi-phone' }
-        ],
-        row3: [
-          { text: 'About Us', icon: '', url: '/general/about' },
-          { text: 'FAQ', icon: '', url: '/general/faq' },
-          { text: 'Login', icon: '', url: '#' },
-          { text: 'How it works', icon: '', url: '/general/how-it-works' }
-        ]
-      },
-      height: null,
-      break_point_name: null
+      row2: [
+        { text: 'support@writeray.com', icon: 'mdi-email' },
+        { text: '+254 732 660 968', icon: 'mdi-phone' }
+      ],
+      row3: [
+        { text: 'About Us', icon: '', url: '/general/about' },
+        { text: 'FAQ', icon: '', url: '/general/faq' },
+        { text: 'Login', icon: '', url: '#' },
+        { text: 'How it works', icon: '', url: '/general/how-it-works' }
+      ]
+    })
+    const height = ref(null)
+
+    return {
+      footerLinks,
+      height
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-footer{
+.footer {
+  position: fixed;
   left: 0;
-  height: 100%;
   bottom: 0;
   width: 100%;
-  overflow: hidden;
+  text-align: center;
   .row1Footer{
     cursor: pointer;
     text-transform: none;
