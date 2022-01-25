@@ -1,11 +1,9 @@
 <template>
-  <v-app>
-    Home page
-  </v-app>
+  <div>BaseFooter</div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'BaseFooter'
 }
 </script>
