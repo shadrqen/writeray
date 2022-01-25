@@ -1,4 +1,4 @@
-import Vuex from 'vuex'
+import { Store } from 'vuex'
 
 import design from './modules/design'
 
@@ -9,7 +9,7 @@ import user from './modules/user'
 let store: any
 
 const initStore = () => {
-  return store || (store = new Vuex.Store({
+  return store || (store = new Store({
     state: () => ({}),
     actions: {},
     mutations: {},

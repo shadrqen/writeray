@@ -1,5 +1,6 @@
 // import router from '@/router'
 // import api from '../../api/api'
+// @ts-ignore
 import { Dictionary } from 'vue-router/types/router'
 
 /* A function that contains default state values
@@ -194,58 +195,58 @@ const getters = {
     - Actions can contain arbitrary asynchronous operations.
 */
 const actions = {
-  async getDisciplines ({ commit, state }: any) {
+  /* async getDisciplines ({ commit, state }: any) {
     if (state.disciplines.length === 0 || !Array.isArray(state.disciplines)) {
-/*      return await api.getRequest('orders/v1/get_disciplines')
+      return await api.getRequest('orders/v1/get_disciplines')
         .then((response: any) => {
           commit('changeDisciplines', Array.isArray(response) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        })*/
+        })
     } else {
       return true
     }
   },
   async getGender ({ commit, state }: any) {
     if (state.gender.length === 0 || !Array.isArray(state.gender)) {
-/*      return await api.getRequest('orders/v1/get_genders')
+      return await api.getRequest('orders/v1/get_genders')
         .then((response: any) => {
           commit('changeGender', Array.isArray(response) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        })*/
+        })
     } else {
       return true
     }
   },
   async getCountries ({ commit, state }: any) {
     if (state.countries.length === 0 || !Array.isArray(state.countries)) {
-      /* return await api.getRequest('orders/v1/get_countries')
+      return await api.getRequest('orders/v1/get_countries')
         .then((response: any) => {
           commit('changeCountries', Array.isArray(response) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        }) */
+        })
     } else {
       return true
     }
   },
   async getCitationStyles ({ commit, state }: any) {
     if (state.citationStyles.length === 0 || !Array.isArray(state.citationStyles)) {
-      /* return await api.getRequest('orders/v1/get_citation_styles')
+      return await api.getRequest('orders/v1/get_citation_styles')
         .then((response: any) => {
           commit('changeCitationStyles', Array.isArray(response) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        }) */
+        })
     } else {
       return true
     }
@@ -256,32 +257,32 @@ const actions = {
         academicInclined: true,
         orderInclined: false
       }
-      /* return await api.postRequest('orders/v1/get_education_levels', educationLevelsDetails)
+      return await api.postRequest('orders/v1/get_education_levels', educationLevelsDetails)
         .then((response: any) => {
           commit('changeEducationLevels', Array.isArray(response) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        }) */
+        })
     } else {
       return true
     }
   },
   async getGrammarQuestions ({ commit, state }: any) {
     if (state.grammarQuestions.length === 0 || !Array.isArray(state.grammarQuestions)) {
-      /* return await api.getRequest('orders/v1/get_grammar_questions')
+      return await api.getRequest('orders/v1/get_grammar_questions')
         .then((response: any) => {
           commit('changeGrammarQuestions', Array.isArray(response.answers) ? response : [])
           return true
         })
         .catch((error: any) => {
           return Promise.reject(error)
-        }) */
+        })
     } else {
       return true
     }
-  }
+  } */
 }
 
 /* The only way to change a Vuex state is by committing a mutation */
@@ -313,7 +314,7 @@ const mutations = {
   changeWholeWriterRegistrationForm: (state: any, val: any) => {
     state.writerRegistrationForm = val
   },
-  changeWriterRegistrationForm: (state: any, { key, subKey, val, option }: any) => {
+  changeWriterRegistrationForm: (state: any, { key, subKey, val }: any) => {
     if (subKey !== null) {
       state.writerRegistrationForm[key][subKey] = val
     } else {
@@ -322,7 +323,7 @@ const mutations = {
   },
   resetRegistrationState: (state: any) => {
     const s: Dictionary<any> = getDefaultRegistrationState
-    Object.keys(s).forEach(key => {
+    Object.keys(s).forEach((key) => {
       state[key] = s[key]
     })
   }

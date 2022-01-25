@@ -146,7 +146,7 @@ const mutations = {
   },
   resetUserState: (state: any) => {
     const s: Dictionary<any> = getDefaultUserState()
-    Object.keys(s).forEach(key => {
+    Object.keys(s).forEach((key) => {
       state[key] = s[key]
     })
     // router.push('/login').then(() => {})
