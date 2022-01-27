@@ -9,8 +9,7 @@
     "test:client:unit:tests": "cd client && npm run test:unit"
   },
   "dependencies": {
-    "husky": "^4.3.0",
-    "npm-run-all": "^4.1.5"
+    "husky": "^4.3.0"
   },
   "husky": {
     "hooks": {
