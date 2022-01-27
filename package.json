@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lintClient": "cd client && npm run lint"
+    "lint:client": "cd client && npm run lint",
+    "test:client:unit:tests": "cd client && npm run test:unit"
   },
   "dependencies": {
     "husky": "^4.3.0",
@@ -13,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "cd client && npm run lint"
+      "pre-commit": "npm run lint:client && npm run test:client:unit:tests"
     }
   },
   "repository": {
