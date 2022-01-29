@@ -13,36 +13,43 @@
           <v-row no-gutters>
             <v-col xl="6" lg="6" md="6" sm="6" xs="4">
               <v-toolbar-title
-                @click="redirect_to_url('/')"
                 class="mt-1 toolbar_title"
-              >Writeray
+                @click="redirect_to_url('/')"
+              >
+                Writeray
               </v-toolbar-title>
             </v-col>
-            <v-spacer></v-spacer>
-            <v-col xl="6" lg="6" md="6" sm="6" xs="8" style="justify-content: center">
+            <v-spacer />
+            <v-col
+              xl="6"
+              lg="6"
+              md="6"
+              sm="6"
+              xs="8"
+              style="justify-content: center;"
+            >
               <client-only>
                 <v-row class="toolbar_row mt-1">
-                  <v-spacer></v-spacer>
+                  <v-spacer />
                   <v-toolbar-items>
-
                     <div class="text-center">
                       <v-menu
                         offset-y
                       >
-                        <template v-slot:activator="{ on }">
-                      <span
-                        style="cursor:pointer;"
-                        v-on="on"
-                      >
-                        <v-chip
-                          id="userEmailChip"
-                          outlined
-                        >
-                          <v-icon>person</v-icon>
-                          {{ email }}
-                          <v-icon>expand_more</v-icon>
-                        </v-chip>
-                      </span>
+                        <template #activator="{ on }">
+                          <span
+                            style="cursor: pointer;"
+                            v-on="on"
+                          >
+                            <v-chip
+                              id="userEmailChip"
+                              outlined
+                            >
+                              <v-icon>person</v-icon>
+                              {{ email }}
+                              <v-icon>expand_more</v-icon>
+                            </v-chip>
+                          </span>
                         </template>
 
                         <v-card>
@@ -57,10 +64,10 @@
                                 @click="clientAction(item.action)"
                               >
                                 <v-list-item-icon>
-                                  <v-icon v-text="item.icon"></v-icon>
+                                  <v-icon v-text="item.icon" />
                                 </v-list-item-icon>
-                                <v-list-item-content style="padding-right: 30px">
-                                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                                <v-list-item-content style="padding-right: 30px;">
+                                  <v-list-item-title v-text="item.text" />
                                 </v-list-item-content>
                               </v-list-item>
                             </v-list-item-group>
@@ -79,43 +86,76 @@
         <v-container>
           <v-row no-gutters>
             <v-col xl="6" lg="6" md="6" sm="6" xs="4">
-              <v-toolbar-title @click="redirect_to_url('/')" class="toolbar_title">Writeray</v-toolbar-title>
+              <v-toolbar-title class="toolbar_title" @click="redirect_to_url('/')">
+                Writeray
+              </v-toolbar-title>
             </v-col>
-            <v-spacer></v-spacer>
-            <v-col xl="6" lg="6" md="6" sm="6" xs="8" style="justify-content: center">
+            <v-spacer />
+            <v-col
+              xl="6"
+              lg="6"
+              md="6"
+              sm="6"
+              xs="8"
+              style="justify-content: center;"
+            >
               <v-row class="toolbar_row mt-1">
-                <v-toolbar-items class="toolbar_items" v-if="['md', 'lg', 'xl'].includes(viewport_code)"
-                                 @click="redirect_to_url('/general/how-it-works')">How It Works
+                <v-toolbar-items
+                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  class="toolbar_items"
+                  @click="redirect_to_url('/general/how-it-works')"
+                >
+                  How It Works
                 </v-toolbar-items>
-                <v-spacer></v-spacer>
-                <v-toolbar-items class="toolbar_items" v-if="['md', 'lg', 'xl'].includes(viewport_code)"
-                                 @click="redirect_to_url('/general/faq')">FAQ
+                <v-spacer />
+                <v-toolbar-items
+                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  class="toolbar_items"
+                  @click="redirect_to_url('/general/faq')"
+                >
+                  FAQ
                 </v-toolbar-items>
-                <v-spacer></v-spacer>
-                <v-toolbar-items class="toolbar_items" v-if="['md', 'lg', 'xl'].includes(viewport_code)"
-                                 @click="redirect_to_url('/general/about')">About
+                <v-spacer />
+                <v-toolbar-items
+                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  class="toolbar_items"
+                  @click="redirect_to_url('/general/about')"
+                >
+                  About
                 </v-toolbar-items>
-                <v-spacer></v-spacer>
-                <v-toolbar-items class="toolbar_items" v-if="inner_width>=300 && localLoginStatus === false">
-                <span id="login_span" @click="redirect_to_url('login')">
-                  Log In
-                </span>
+                <v-spacer />
+                <v-toolbar-items v-if="inner_width>=300 && localLoginStatus === false" class="toolbar_items">
+                  <span id="login_span" @click="redirect_to_url('login')">
+                    Log In
+                  </span>
                 </v-toolbar-items>
-                <v-spacer></v-spacer>
+                <v-spacer />
                 <v-toolbar-items v-if="['xs', 'sm'].includes(viewport_code) && localLoginStatus === false">
-                  <v-app-bar-nav-icon @click="navbarIcon = !navbarIcon"></v-app-bar-nav-icon>
+                  <v-app-bar-nav-icon @click="navbarIcon = !navbarIcon" />
                 </v-toolbar-items>
               </v-row>
             </v-col>
           </v-row>
         </v-container>
         <v-row v-if="show_navbar_dialog()" no-gutters app style="position: absolute; top: 0; left: 0; width: 100%;">
-          <v-col cols="12" xl="2" lg="2" md="2" sm="2" v-for="(url, id) in navbarUrls" :key="id">
+          <v-col
+            v-for="(url, id) in navbarUrls"
+            :key="id"
+            cols="12"
+            xl="2"
+            lg="2"
+            md="2"
+            sm="2"
+          >
             <v-card class="rounded-0 navbar_link_card" light @click="redirect_to_url(url.url)">
               <v-card-text v-if="url.icon" class="white--text text-center">
-                <v-icon color="white">{{ url.icon }}</v-icon>
+                <v-icon color="white">
+                  {{ url.icon }}
+                </v-icon>
               </v-card-text>
-              <v-card-text v-else class="white--text text-center"> {{ url.text }}</v-card-text>
+              <v-card-text v-else class="white--text text-center">
+                {{ url.text }}
+              </v-card-text>
             </v-card>
           </v-col>
         </v-row>
@@ -128,10 +168,10 @@
       <div
         class="lds-ellipsis"
       >
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div />
+        <div />
+        <div />
+        <div />
       </div>
     </v-overlay>
   </div>
@@ -167,15 +207,10 @@ export default {
       overlay: false
     }
   },
-  async fetch () {
+  fetch () {
     this.localLoginStatus = null
     this.inner_width = 300
     this.viewport_code = 'xs'
-  },
-  watch: {
-    loginStatus () {
-      this.localLoginStatus = this.loginStatus
-    }
   },
   computed: {
     ...mapGetters({
@@ -186,6 +221,26 @@ export default {
       email: 'email',
       reportProblemDialog: 'reportProblemDialog',
       viewportCode: 'getViewPortCode'
+    })
+  },
+  watch: {
+    loginStatus () {
+      this.localLoginStatus = this.loginStatus
+    }
+  },
+  mounted () {
+    if (process.env.VUE_ENV === 'client') {
+      this.localLoginStatus = this.loginStatus
+      this.viewport_code = this.viewportCode
+      this.changeLoginDialog(false)
+      this.set_window_inner_width()
+      window.addEventListener('resize', this.set_window_inner_width)
+    }
+    bus.$on('changeNavOverlay', (val) => {
+      this.overlay = val
+    })
+    bus.$on('changeNavOverlay', (val) => {
+      this.overlay = val
     })
   },
   methods: {
@@ -206,43 +261,41 @@ export default {
           this.$router.push(link)
         }
         this.navbarIcon = false
+      } else if (link === 'close_nav_dialog') {
+        this.navbarIcon = false
       } else {
-        if (link === 'close_nav_dialog') {
-          this.navbarIcon = false
-        } else {
-          const linkWithHash = '/' + link // so as to use in the if statement below
-          if (this.$route.fullPath !== linkWithHash) {
-            if (link === 'login') {
-              this.changeLoginDialogContents({
-                key: 'dialogTitle',
-                subKey: null,
-                val: 'Log in to your account'
-              })
-              this.changeLoginDialogContents({
-                key: 'dialogContent',
-                subKey: 'submitEmail',
-                val: true
-              })
-              this.changeLoginDialogContents({
-                key: 'dialogContent',
-                subKey: 'login',
-                val: false
-              })
-              this.changeLoginDialogContents({
-                key: 'dialogContent',
-                subKey: 'notification',
-                val: false
-              })
-              this.changeLoginDialogContents({
-                key: 'dialogContent',
-                subKey: 'setPassword',
-                val: false
-              })
-              this.changeLoginDialog(true)
-            } else {
-              this.$router.push(link)
-              this.navbarIcon = false
-            }
+        const linkWithHash = '/' + link // so as to use in the if statement below
+        if (this.$route.fullPath !== linkWithHash) {
+          if (link === 'login') {
+            this.changeLoginDialogContents({
+              key: 'dialogTitle',
+              subKey: null,
+              val: 'Log in to your account'
+            })
+            this.changeLoginDialogContents({
+              key: 'dialogContent',
+              subKey: 'submitEmail',
+              val: true
+            })
+            this.changeLoginDialogContents({
+              key: 'dialogContent',
+              subKey: 'login',
+              val: false
+            })
+            this.changeLoginDialogContents({
+              key: 'dialogContent',
+              subKey: 'notification',
+              val: false
+            })
+            this.changeLoginDialogContents({
+              key: 'dialogContent',
+              subKey: 'setPassword',
+              val: false
+            })
+            this.changeLoginDialog(true)
+          } else {
+            this.$router.push(link)
+            this.navbarIcon = false
           }
         }
       }
@@ -254,7 +307,7 @@ export default {
         this.inner_width = window.innerWidth
       }
     },
-    async logoutClient () {
+    logoutClient () {
       this.resetRegistrationState()
       this.resetUserState()
       location.reload()
@@ -274,21 +327,6 @@ export default {
           break
       }
     }
-  },
-  mounted () {
-    if (process.env.VUE_ENV === 'client') {
-      this.localLoginStatus = this.loginStatus
-      this.viewport_code = this.viewportCode
-      this.changeLoginDialog(false)
-      this.set_window_inner_width()
-      window.addEventListener('resize', this.set_window_inner_width)
-    }
-    bus.$on('changeNavOverlay', val => {
-      this.overlay = val
-    })
-    bus.$on('changeNavOverlay', val => {
-      this.overlay = val
-    })
   }
 }
 </script>
