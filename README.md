@@ -51,8 +51,8 @@ The integration of the clientside is currently ongoing. Next will be the server 
 
 <p align="center">
     <img alt="Writeray Preview All Devices" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/all-devices-black.png">
-    <img alt="Writeray Preview Tablet" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/tablet-white.png">
-    <img alt="Writeray Preview Mobile" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/mobile-white.png">
+    <img alt="Writeray Preview Tablet" width="30%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/tablet-white.png">
+    <img alt="Writeray Preview Mobile" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/mobile-white.png">
 </p>
 
 Installation
