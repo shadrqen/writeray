@@ -10,7 +10,8 @@
 
 <p align="center">
 <a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/ci.yml/badge.svg?branch=main" ></a>
-<a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/docker-publish-latest.yml/badge.svg?branch=main" ></a>
+
+[//]: # (<a href="https://github.com/shadrqen/writeray/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/shadrqen/writeray/actions/workflows/docker-publish-latest.yml/badge.svg?branch=main" ></a>)
 </p>
 
 <p align="center">
@@ -22,8 +23,7 @@
 #### About
 <b> Writeray </b> is a professional service/platform that gives professionals/writers access to the most reliable freelance jobs not only in Kenya but also across the world.
 It brings together the most experienced and highly skilled individuals, before being vetted carefully to ensure only the best get to handle the client orders. Orders and paid
-bi-weekly, currently only using M-PESA - a Kenyan mobile phone-based money transfer and payments service. There are very high quality standards expected from the professionals 
-- which makes the platform stand out from its peers.
+bi-weekly, currently only using M-PESA - a Kenyan mobile phone-based money transfer and payments service. There are very high quality standards expected from the professionals - which makes the platform stand out from its peers.
 
 ## Structure
 The platform is decoupled into three modules.
