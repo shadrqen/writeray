@@ -49,6 +49,12 @@ The integration of the clientside is currently ongoing. Next will be the server 
 - **24/7 Support** - Get access to instant support services every hour and day of the week
 - **Orders in the sphere of your interest** Concentrate on orders that spark your interest and become a pro
 
+<p align="center">
+    <img alt="Writeray Preview All Devices" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/all-devices-black.png">
+    <img alt="Writeray Preview Tablet" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/tablet-white.png">
+    <img alt="Writeray Preview Mobile" width="100%" src="https://raw.githubusercontent.com/shadrqen/writeray/main/client/static/mobile-white.png">
+</p>
+
 Installation
 ------------
 
