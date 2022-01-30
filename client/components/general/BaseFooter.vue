@@ -9,7 +9,13 @@
           justify="center"
           no-gutters
         >
-          <v-col cols="6" xl="5" lg="5" md="5" sm="5">
+          <v-col
+            cols="6"
+            xl="5"
+            lg="5"
+            md="5"
+            sm="5"
+          >
             <span
               v-for="(link, id) in footerLinks.row1"
               :key="id"
@@ -20,7 +26,13 @@
               </span> <br>
             </span>
           </v-col>
-          <v-col cols="6" xl="5" lg="5" md="5" sm="5">
+          <v-col
+            cols="6"
+            xl="5"
+            lg="5"
+            md="5"
+            sm="5"
+          >
             <span
               v-for="(link, id) in footerLinks.row2"
               :key="id"
@@ -49,7 +61,11 @@
             </span>
           </v-col>
           <v-spacer />
-          <v-col id="media_follow_us_on" cols="12" class="text-center white--text">
+          <v-col
+            id="media_follow_us_on"
+            cols="12"
+            class="text-center white--text"
+          >
             <span id="follow_us_on">Follow us on</span>
             <v-icon color="white">
               mdi-facebook
