@@ -11,7 +11,13 @@
       <template v-if="!!localLoginStatus">
         <v-container>
           <v-row no-gutters>
-            <v-col xl="6" lg="6" md="6" sm="6" xs="4">
+            <v-col
+              xl="6"
+              lg="6"
+              md="6"
+              sm="6"
+              xs="4"
+            >
               <v-toolbar-title
                 class="mt-1 toolbar_title"
                 @click="redirect_to_url('/')"
@@ -85,8 +91,17 @@
       <template v-else>
         <v-container>
           <v-row no-gutters>
-            <v-col xl="6" lg="6" md="6" sm="6" xs="4">
-              <v-toolbar-title class="toolbar_title" @click="redirect_to_url('/')">
+            <v-col
+              xl="6"
+              lg="6"
+              md="6"
+              sm="6"
+              xs="4"
+            >
+              <v-toolbar-title
+                class="toolbar_title"
+                @click="redirect_to_url('/')"
+              >
                 Writeray
               </v-toolbar-title>
             </v-col>
@@ -124,8 +139,14 @@
                   About
                 </v-toolbar-items>
                 <v-spacer />
-                <v-toolbar-items v-if="inner_width>=300 && localLoginStatus === false" class="toolbar_items">
-                  <span id="login_span" @click="redirect_to_url('login')">
+                <v-toolbar-items
+                  v-if="inner_width>=300 && localLoginStatus === false"
+                  class="toolbar_items"
+                >
+                  <span
+                    id="login_span"
+                    @click="redirect_to_url('login')"
+                  >
                     Log In
                   </span>
                 </v-toolbar-items>
@@ -137,7 +158,12 @@
             </v-col>
           </v-row>
         </v-container>
-        <v-row v-if="show_navbar_dialog()" no-gutters app style="position: absolute; top: 0; left: 0; width: 100%;">
+        <v-row
+          v-if="show_navbar_dialog()"
+          no-gutters
+          app
+          style="position: absolute; top: 0; left: 0; width: 100%;"
+        >
           <v-col
             v-for="(url, id) in navbarUrls"
             :key="id"
@@ -147,13 +173,23 @@
             md="2"
             sm="2"
           >
-            <v-card class="rounded-0 navbar_link_card" light @click="redirect_to_url(url.url)">
-              <v-card-text v-if="url.icon" class="white--text text-center">
+            <v-card
+              class="rounded-0 navbar_link_card"
+              light
+              @click="redirect_to_url(url.url)"
+            >
+              <v-card-text
+                v-if="url.icon"
+                class="white--text text-center"
+              >
                 <v-icon color="white">
                   {{ url.icon }}
                 </v-icon>
               </v-card-text>
-              <v-card-text v-else class="white--text text-center">
+              <v-card-text
+                v-else
+                class="white--text text-center"
+              >
                 {{ url.text }}
               </v-card-text>
             </v-card>
@@ -231,7 +267,7 @@ export default {
   mounted () {
     if (process.env.VUE_ENV === 'client') {
       this.localLoginStatus = this.loginStatus
-      this.viewport_code = this.viewportCode
+      this.viewport_code = this.$store.state.design.viewport_code
       this.changeLoginDialog(false)
       this.set_window_inner_width()
       window.addEventListener('resize', this.set_window_inner_width)
@@ -303,7 +339,7 @@ export default {
     /* I am using the window innerwidth in the toolbar ( particularly for the login link ) */
     set_window_inner_width () {
       if (process.env.VUE_ENV === 'client') {
-        this.viewport_code = this.viewportCode
+        this.viewport_code = this.$store.state.design.viewport_code
         this.inner_width = window.innerWidth
       }
     },

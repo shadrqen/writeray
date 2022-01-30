@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import shrinkRay from 'shrink-ray-current'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -28,7 +29,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/composition-api.js',
-    '~/plugins/bus.js'
+    '~/plugins/bus.js',
+    { src: '~/plugins/localStorage.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,7 +43,8 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    'nuxt-compress'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,10 +55,16 @@ export default {
     '@nuxtjs/pwa'
   ],
 
+  render: {
+    compressor: shrinkRay({
+      useZopfliForGzip: false
+    })
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: 'http://localhost:6200/'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
