@@ -116,7 +116,7 @@
             >
               <v-row class="toolbar_row mt-1">
                 <v-toolbar-items
-                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  v-if="['md', 'lg', 'xl'].includes(viewportCode)"
                   class="toolbar_items"
                   @click="redirect_to_url('/general/how-it-works')"
                 >
@@ -124,7 +124,7 @@
                 </v-toolbar-items>
                 <v-spacer />
                 <v-toolbar-items
-                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  v-if="['md', 'lg', 'xl'].includes(viewportCode)"
                   class="toolbar_items"
                   @click="redirect_to_url('/general/faq')"
                 >
@@ -132,7 +132,7 @@
                 </v-toolbar-items>
                 <v-spacer />
                 <v-toolbar-items
-                  v-if="['md', 'lg', 'xl'].includes(viewport_code)"
+                  v-if="['md', 'lg', 'xl'].includes(viewportCode)"
                   class="toolbar_items"
                   @click="redirect_to_url('/general/about')"
                 >
@@ -140,7 +140,7 @@
                 </v-toolbar-items>
                 <v-spacer />
                 <v-toolbar-items
-                  v-if="inner_width>=300 && localLoginStatus === false"
+                  v-if="innerWidth>=300 && localLoginStatus === false"
                   class="toolbar_items"
                 >
                   <span
@@ -151,7 +151,7 @@
                   </span>
                 </v-toolbar-items>
                 <v-spacer />
-                <v-toolbar-items v-if="['xs', 'sm'].includes(viewport_code) && localLoginStatus === false">
+                <v-toolbar-items v-if="['xs', 'sm'].includes(viewportCode) && localLoginStatus === false">
                   <v-app-bar-nav-icon @click="navbarIcon = !navbarIcon" />
                 </v-toolbar-items>
               </v-row>
@@ -215,49 +215,65 @@
 
 <script>
 
-import { mapGetters, mapMutations } from 'vuex'
+// import { useStore  } from 'vuex'
+import { ref, useStore } from '@vue/composition-api'
 
 import { bus } from '@/plugins/bus'
 
 export default {
   name: 'BaseHeader',
-  data () {
+  setup () {
+    const store = useStore()
+    const innerWidth = ref(0)
+    const navbarIcon = ref(false)
+    const navbarUrls = ref([
+      { text: 'How it Works', icon: '', url: '/general/how-it-works' },
+      { text: 'FAQ', icon: '', url: '/general/faq' },
+      { text: 'About', icon: '', url: '/general/about' },
+      { text: 'Log In', icon: '', url: 'login' },
+      { text: '', icon: 'mdi-close', url: 'close_nav_dialog' }
+    ])
+    const selectedItem = ref(null)
+    const writerItems = ref([
+      { text: 'Report Problem', icon: 'report', action: 'report' },
+      { text: 'Logout', icon: 'mdi-logout', action: 'logoutClient' }
+    ])
+    const menu = ref(false)
+    const viewportCode = ref('')
+
+    const overlay = ref(false)
+
+    const loginStatus = store.user.getters.loginStatus
+    const loginDialog = store.user.getters.loginDialog
+    const loginDialogContents = store.user.getters.loginDialogContents
+    const writerRegistrationForm = store.registration.getters.writerRegistrationForm
+    const email = store.user.getters.email
+    const reportProblemDialog = store.user.getters.reportProblemDialog
+
+    const localLoginStatus = ref(loginStatus)
+
     return {
-      inner_width: 0,
-      navbarIcon: false,
-      navbarUrls: [
-        { text: 'How it Works', icon: '', url: '/general/how-it-works' },
-        { text: 'FAQ', icon: '', url: '/general/faq' },
-        { text: 'About', icon: '', url: '/general/about' },
-        { text: 'Log In', icon: '', url: 'login' },
-        { text: '', icon: 'mdi-close', url: 'close_nav_dialog' }
-      ],
-      selectedItem: null,
-      writerItems: [
-        { text: 'Report Problem', icon: 'report', action: 'report' },
-        { text: 'Logout', icon: 'mdi-logout', action: 'logoutClient' }
-      ],
-      menu: false,
-      viewport_code: null,
-      localLoginStatus: this.loginStatus,
-      overlay: false
+      email,
+      innerWidth,
+      navbarIcon,
+      navbarUrls,
+      selectedItem,
+      writerItems,
+      menu,
+      viewportCode,
+      loginStatus,
+      loginDialog,
+      loginDialogContents,
+      localLoginStatus,
+      overlay,
+      reportProblemDialog,
+      writerRegistrationForm
     }
   },
   fetch () {
     this.localLoginStatus = null
-    this.inner_width = 300
-    this.viewport_code = 'xs'
-  },
-  computed: {
-    ...mapGetters({
-      loginStatus: 'loginStatus',
-      loginDialog: 'loginDialog',
-      loginDialogContents: 'loginDialogContents',
-      writerRegistrationForm: 'writerRegistrationForm',
-      email: 'email',
-      reportProblemDialog: 'reportProblemDialog',
-      viewportCode: 'getViewPortCode'
-    })
+    this.innerWidth = 300
+    this.viewportCode = 'xs'
   },
   watch: {
     loginStatus () {
@@ -267,10 +283,10 @@ export default {
   mounted () {
     if (process.env.VUE_ENV === 'client') {
       this.localLoginStatus = this.loginStatus
-      this.viewport_code = this.$store.state.design.viewport_code
+      this.viewportCode = this.$store.state.design.viewport_code
       this.changeLoginDialog(false)
-      this.set_window_inner_width()
-      window.addEventListener('resize', this.set_window_inner_width)
+      this.setWindowInnerWidth()
+      window.addEventListener('resize', this.setWindowInnerWidth)
     }
     bus.$on('changeNavOverlay', (val) => {
       this.overlay = val
@@ -285,7 +301,7 @@ export default {
     ]),
     /* Function to determine whether to show the navbar dialog or not */
     show_navbar_dialog () {
-      return this.navbarIcon && ['xs', 'sm'].includes(this.viewport_code)
+      return this.navbarIcon && ['xs', 'sm'].includes(this.viewportCode)
     },
     /* Function to open links after clicking one in the navbar */
     /* Function works to redirect requests to the requested clicked link */
@@ -337,10 +353,10 @@ export default {
       }
     },
     /* I am using the window innerwidth in the toolbar ( particularly for the login link ) */
-    set_window_inner_width () {
+    setWindowInnerWidth () {
       if (process.env.VUE_ENV === 'client') {
-        this.viewport_code = this.$store.state.design.viewport_code
-        this.inner_width = window.innerWidth
+        this.viewportCode = this.$store.state.design.viewport_code
+        this.innerWidth = window.innerWidth
       }
     },
     logoutClient () {
